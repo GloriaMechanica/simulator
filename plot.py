@@ -94,7 +94,7 @@ def PlotBowSim(alphas, base):
     # Generate the sections of the strings, these are static objets
     # Make string radius adjustable for easier testing
     string_diameter = 1
-    string_radius = 33
+    string_radius = 38
     e_angle = (-27+90)/180*np.pi
     a_angle = (-9+90)/180*np.pi
     d_angle = (9+90)/180*np.pi
@@ -146,9 +146,9 @@ D = -9
 A = 9
 E = 27
 
-start_string = E
-end_string = A
-string_radius = 38 - 5 # needs to be 5mm lower becaus of bow rollers
+start_string = D
+end_string = E
+string_radius = 38 # needs to be 5mm lower becaus of bow rollers
 
 base = {"posx_x": -60, "posx_y": 25, "posx_r": 25, "posy_x": 60, "posy_y": 50, "posy_r": 35, "roller_r":5}
 Rphi_sim = {"R_start": string_radius, "phi_start": start_string * np.pi / 180, "R_end": string_radius, "phi_end": end_string * np.pi / 180}
