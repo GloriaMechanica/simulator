@@ -9,7 +9,6 @@ of the angles of POS-X and POS-Y
 
 import numpy as np
 import matplotlib.pyplot as plt
-import numpy as np
 from coordinates import AngleToPolar
 from coordinates import PolarToAngle
 
@@ -40,11 +39,11 @@ def AnglesToActualVector(alpha, base):
 
 
 """
-PlotBowSim(Rphi_sim, base, alphas): 
+PlotBowSim(alphas ,base): 
     Plots the Bow Movement depending on a values for XPOS and YPOS
 
-    base: dictionary with origins and radii of both positioning levers
     alphas = [alpha_x_t, alpha_y_t]: alpha_x_t and alpha_y_t are lever angles depending on t
+    base: dictionary with origins and radii of both positioning levers
 """
 
 
@@ -107,7 +106,7 @@ alphaMotionProto(Rphi_sim):
 
 
 def alphaMotionProto(Rphi_sim, base):
-    samples = 10
+    samples = 30
 
     alpha_start = PolarToAngle((Rphi_sim["R_start"], Rphi_sim["phi_start"]), base)
     alpha_end = PolarToAngle((Rphi_sim["R_end"], Rphi_sim["phi_end"]), base)
@@ -125,7 +124,7 @@ def alphaMotionProto(Rphi_sim, base):
 # TESTING STUFF
 
 base = {"posx_x": -60, "posx_y": 35, "posx_r": 25, "posy_x": 60, "posy_y": 45, "posy_r": 35}
-Rphi_sim = {"R_start": 38, "phi_start": 27 * np.pi / 180, "R_end": 38, "phi_end": -9 * np.pi / 180}
+Rphi_sim = {"R_start": 38, "phi_start": 27 * np.pi / 180, "R_end": 50, "phi_end": -9 * np.pi / 180}
 
 alphas = alphaMotionProto(Rphi_sim, base)
 
