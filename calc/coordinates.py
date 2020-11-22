@@ -17,7 +17,6 @@ def get_quadrant(vector):
             q = 3
     return q
 
-
 def model(input_coord, left_params, right_params):
     R = input_coord["radius"]
     G = input_coord["angle"]
