@@ -17,6 +17,7 @@ def get_quadrant(vector):
             q = 3
     return q
 
+
 def model(input_coord, left_params, right_params):
     R = input_coord["radius"]
     G = input_coord["angle"]
@@ -32,23 +33,23 @@ def model(input_coord, left_params, right_params):
     x_input = R * math.cos(G)
     y_input = R * math.sin(G)
 
-    # Coefficient vector for cubic-equation to get parameter for left instance
+    # Coefficient vector for quadratic-equation to get parameter for left instance
     coeff_left = [pow(x_input, 2) + pow(y_input, 2),
                   -2 * y_input * (x_input - x_left) + 2 * x_input * (y_input - y_left),
                   pow((x_input - x_left), 2) + pow((y_input - y_left), 2) - pow(r_left, 2)
                   ]
 
     solution_left = np.roots(coeff_left)
-    #print(solution_left)
+    # print(solution_left)
 
-    # Coefficient vector for cubic-equation to get parameter for right instance
+    # Coefficient vector for quadratic-equation to get parameter for right instance
     coeff_right = [pow(x_input, 2) + pow(y_input, 2),
                    -2 * y_input * (x_input - x_right) + 2 * x_input * (y_input - y_right),
                    pow((x_input - x_right), 2) + pow((y_input - y_right), 2) - pow(r_right, 2)
                    ]
 
     solution_right = np.roots(coeff_right)
-    #print(solution_right)
+    # print(solution_right)
 
     if sum(np.iscomplex(solution_right)) or sum(np.iscomplex(solution_left)):
         print("##### ERROR: There is no real solution for the given input #####")
@@ -70,14 +71,14 @@ def model(input_coord, left_params, right_params):
         q = get_quadrant(h)
         if q == 1 or q == 4:
             angle_left = math.atan2(h[1], h[0])
-            validate_angle_left +=1
+            validate_angle_left += 1
 
     validate_angle_right = 0
     for h in intersect_right:
         q = get_quadrant(h)
         if q == 2 or q == 3:
             angle_right = math.atan2(h[1], -h[0])
-            validate_angle_right +=1
+            validate_angle_right += 1
 
     if validate_angle_left != 1 and validate_angle_right != 1:
         print("##### ERROR: Angle out of range #####")
