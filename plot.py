@@ -147,11 +147,12 @@ A = 9
 E = 27
 
 start_string = D
-end_string = E
-string_radius = 38 # needs to be 5mm lower becaus of bow rollers
+start_height = 38.5
+end_string = D
+end_height = 42
 
 base = {"posx_x": -60, "posx_y": 25, "posx_r": 25, "posy_x": 60, "posy_y": 50, "posy_r": 35, "roller_r":5}
-Rphi_sim = {"R_start": string_radius, "phi_start": start_string * np.pi / 180, "R_end": string_radius, "phi_end": end_string * np.pi / 180}
+Rphi_sim = {"R_start": start_height, "phi_start": start_string * np.pi / 180, "R_end": end_height, "phi_end": end_string * np.pi / 180}
 
 alphas = alphaMotionProto(Rphi_sim, base)
 
