@@ -1,6 +1,11 @@
-# simulator
-Simulator python script for motor controllers
+# Simulator
+Simulator python scripts for the SPV.
 
-This python script is used to simulate the motion controller on the STM32F767ZI microcontroller. It calculates a "tick-exact" simulation of the timer, to test the validity of motion control programs without having to run them on the actual machine.
+This repo contains multiple simulation tools and scripts to assist the SPV project. These bits and pieces are "work in progess", so they might not be well documented or even working. But the plan is to have these useful pieces around to be able to implement them in the SPV PC software at some point. So far, there are
+* Motion controller simulator: Calculates in a tick-exact manner how a cyclespecification will be executed on the SPV hardware.
+* Coordinate transformation for the bow positioning motors: A bow position given by (r, gamma) is transformed in two machine coordinates (alpha1, alpha2) which can be set on the POSX and POSY axis.
+* Inverse transformation for bow positioning motors
 
-As is, this is just a "work-in-progress" python script. However, at some point this piece of code will be integrated in the SPV-CAM software piece.
+Planned:
+* Simplified motion calculator (only speeds and distances, no stepper information)
+* Minimum time for given distance calculator
