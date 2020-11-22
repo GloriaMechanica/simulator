@@ -14,7 +14,7 @@ Angles are all in radian, dimensions are supposed in mm.
 import numpy as np
 
 #everyting in mm
-base = {"posx_x": -60, "posx_y": 35, "posx_r": 25, "posy_x": 60, "posy_y": 45, "posy_r": 35}
+base = {"posx_x": -60, "posx_y": 35, "posx_r": 25, "posy_x": 60, "posy_y": 45, "posy_r": 35, "roller_r":5}
 
 
 """
@@ -34,10 +34,12 @@ def PolarToAngle (Rphi, base):
     x_right = base["posy_x"]
     y_right = base["posy_y"]
     r_right = base["posy_r"]
+    roller_r = base["roller_r"]
     
+    R = Rphi[0] - roller_r
     G = Rphi[1]+np.pi/2
-    x_input = Rphi[0] * np.cos(G)
-    y_input = Rphi[0] * np.sin(G)
+    x_input = R * np.cos(G)
+    y_input = R * np.sin(G)
 
     # Coefficient vector for quadratic equation to get parameter for left instance
     coeff_left = [pow(x_input, 2) + pow(y_input, 2),
@@ -96,7 +98,8 @@ def AngleToPolar(angles, base):
     U_r = np.array([base["posy_x"], base["posy_y"]]) # pivot point of posy axis
     r_l = base["posx_r"] # radius of posx lever
     r_r = base["posy_r"] # radius of posy lever
-
+    roller_r = base["roller_r"]
+    
     # intersection points
     S_l = U_l + np.array([r_l*np.cos(alpha_l), r_l*np.sin(alpha_l)])
     S_r = U_r + np.array([-r_r*np.cos(alpha_r), r_r*np.sin(alpha_r)])
@@ -112,6 +115,7 @@ def AngleToPolar(angles, base):
     
     R = np.sqrt(np.power(P[0], 2) + np.power(P[1], 2))
     phi = np.arctan2(P[1], P[0]) - np.pi/2
+    R += roller_r
     
     return [R, phi]
 
