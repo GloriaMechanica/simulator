@@ -60,7 +60,7 @@ def model(input_coord, left_params, right_params):
     intersect_right = [[-y_input * solution_right[0] - x_right + x_input,
                         x_input * solution_right[0] - y_right + y_input],
                        [-y_input * solution_right[1] - x_right + x_input,
-                        x_input * solution_right[1] - y_left + y_input]]
+                        x_input * solution_right[1] - y_right + y_input]]
 
     angle_left = 0
     angle_right = 0
@@ -69,14 +69,14 @@ def model(input_coord, left_params, right_params):
     for h in intersect_left:
         q = get_quadrant(h)
         if q == 1 or q == 4:
-            angle_left = math.atan(h[1] / h[0])
+            angle_left = math.atan2(h[1], h[0])
             validate_angle_left +=1
 
     validate_angle_right = 0
     for h in intersect_right:
         q = get_quadrant(h)
-        if q == 1 or q == 4:
-            angle_right = math.atan(h[1] / h[0])
+        if q == 2 or q == 3:
+            angle_right = math.atan2(h[1], -h[0])
             validate_angle_right +=1
 
     if validate_angle_left != 1 and validate_angle_right != 1:
@@ -89,8 +89,8 @@ def model(input_coord, left_params, right_params):
     return angle_left, angle_right
 
 
-input_coord = {"radius": 2.2, "angle": 89 * np.pi / 180}
-left_params = {"x": -3, "y": 2, "radius": 0.5}
-right_params = {"x": 3, "y": 2, "radius": 0.5}
+input_coord = {"radius": 40, "angle": 66 * np.pi / 180}
+left_params = {"x": -60, "y": 45, "radius": 35}
+right_params = {"x": 60, "y": 35, "radius": 25}
 
 model(input_coord, left_params, right_params)
