@@ -24,7 +24,7 @@ plot_pics = 1
 N_APPROX = 4 # number of w_m calculations to approximate optimal passover speed
 R_ERR = 1e-6
 W_ERR = 100
-F_TIMER = 8000e3 # timer frequency
+F_TIMER = 1000e3 # timer frequency
 FACTOR = 1000
 S_CORR = 2
 C_TABLE_SIZE = 1200
@@ -32,7 +32,7 @@ C_TABLE_SIZE = 1200
 # motor parameters (might be different per axis)
 steps_per_rev = 400 #degrees
 step_mode = 4 # 1=full step, 2=half step, 4=quater step ...
-acc = 600 # maximal acceleration in rad/s
+acc = 400 # maximal acceleration in rad/s
 speed_max = 50 # maximal speed in rad/s
 alpha = 2 * np.pi / steps_per_rev / step_mode
 
@@ -64,8 +64,8 @@ if debug_compare==1:
 motor1 = [acc, alpha]
 interesting_diff = []
 
-test_pos =  [0, 	1000, 	2000, 	3100, 	500, 	10000, 	0, 		0, 		0]
-test_time =  [0, 	300, 	700, 	1200, 	1800, 	2800, 	3800, 	4000, 	4500]
+test_pos =  [0, 	1200, 	800, 	3100, 	500, 	10000, 	0, 		0, 		0]
+test_time =  [0, 	500, 	3000, 	4000, 	5000, 	6000, 	7000, 	8000, 	9000]
 
 #test_pos =  [0, 	800, 	1100, 	2000, 	500, 	1000, 	0, 		0, 		0]
 #test_time =  [0, 	300, 	700, 	1200, 	1800, 	2800, 	3000, 	4000, 	4500]

@@ -79,7 +79,7 @@ def PlotBowSim(alphas, base):
         ax.add_artist(roller_right)
     
         # Draw the bow hair
-        plt.plot((positions[0][0]+ros_x, positions[1][0]+ros_x), (positions[0][1]+ros_y, positions[1][1]+ros_y), color="blue", zorder=1, linewidth=lineswidth)
+        plt.plot((positions[0][0]+ros_x, positions[1][0]+ros_x), (positions[0][1]+ros_y, positions[1][1]+ros_y), color="blue", zorder=2, linewidth=lineswidth)
 
         # Draw left lever
         plt.plot((base["posx_x"], positions[0][0]), ([base["posx_y"], positions[0][1]]), color="black", linewidth=lineswidth)
@@ -145,10 +145,10 @@ D = -9
 A = 9
 E = 27
 
-start_string = D
-start_height = 38.5
+start_string = 0
+start_height = 30
 end_string = D
-end_height = 42
+end_height = 38.5
 
 base = {"posx_x": -60, "posx_y": 25, "posx_r": 25, "posy_x": 60, "posy_y": 50, "posy_r": 35, "roller_r":5}
 Rphi_sim = {"R_start": start_height, "phi_start": start_string * np.pi / 180, "R_end": end_height, "phi_end": end_string * np.pi / 180}
